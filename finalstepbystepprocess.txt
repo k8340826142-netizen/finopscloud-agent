@@ -1,0 +1,66 @@
+Here’s the **full set of PowerShell commands** you’ll typically use to get your FastAPI app + Swagger UI running cleanly from start to finish:
+
+---
+
+### 1. Navigate to your project folder
+```powershell
+cd "C:\Users\dell\.vscode\New folder\.vscode"
+```
+
+---
+
+### 2. Start the FastAPI server with Uvicorn
+```powershell
+python -m uvicorn main:app --reload
+```
+- Keep this window open.  
+- You should see logs like:
+  ```
+  Uvicorn running on http://127.0.0.1:8000
+  ```
+
+---
+
+### 3. Open Swagger UI in your browser
+Depending on your browser, run one of these in a **second PowerShell window**:
+
+- For Microsoft Edge:
+```powershell
+start microsoft-edge:http://127.0.0.1:8000/docs
+```
+
+- For Google Chrome:
+```powershell
+start chrome http://127.0.0.1:8000/docs
+```
+
+- For default browser:
+```powershell
+start http://127.0.0.1:8000/docs
+```
+
+---
+
+### 4. Test the `/predict` endpoint
+Example using curl in PowerShell:
+```powershell
+curl -X POST "http://127.0.0.1:8000/predict?cpu_usage=100&memory_usage=150&instance_id=i-5a85b82d80f9eddb6&cpu_cutoff=20&memory_cutoff=30" -H "accept: application/json" -d "{}"
+```
+
+---
+
+### 5. Verify response
+You should see JSON like:
+```json
+{
+  "instance_id": "i-5a85b82d80f9eddb6",
+  "status": "running"
+}
+```
+
+---
+
+👉 That’s the complete workflow:  
+**cd → start Uvicorn → open `/docs` → run curl or Swagger UI → get JSON output.**
+
+Would you like me to bundle these into a **single `.ps1` script** so you can just double‑click it and have everything (server + Swagger UI) start automatically?

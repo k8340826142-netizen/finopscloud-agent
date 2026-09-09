@@ -1,0 +1,5 @@
+vm_id,cpu_usage,memory_usage,is_idle
+vm1,5,20,1
+vm2,60,70,0
+vm3,10,15,1
+vm4,80,90,0
